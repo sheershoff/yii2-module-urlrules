@@ -1,0 +1,43 @@
+{
+  "name": "sheershoff/yii2-module-urlrules",
+  "description": "Extension to support module url rules for Yii2.",
+  "type": "yii2-extension",
+  "keywords": [
+    "sheershoff",
+    "yii",
+    "yii2",
+    "extension",
+    "module",
+    "url",
+    "routing",
+    "url rules",
+    "urlrules"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ilya Sheershoff",
+      "email": "sheershoff@gmail.com",
+      "homepage": "http://sheershoff.ru/",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/sheershoff/yii2-module-urlrules/issues",
+    "source": "https://github.com/sheershoff/yii2-module-urlrules"
+  },
+  "require": {
+    "yiisoft/yii2": "~2.0.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "sheershoff\\ModuleUrlRules\\": "src"
+    }
+  },
+  "extra": {
+    "bootstrap": "sheershoff\\ModuleUrlRules\\ModuleUrlRules"
+  }
+}
