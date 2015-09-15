@@ -36,7 +36,21 @@ Configuration
 
 To use this extension, you have to configure the components section in your application configuration and add getUrlRules or urlRules to your modules.
 
-In your `main.php` for the desired app declare your modules and add the `moduleUrlRules` component:
+In your `main.php` for the desired app add the `moduleUrlRules` component:
+
+```php
+'components' => [
+        // ...
+        'moduleUrlRules' => [
+            'class' => '\sheershoff\ModuleUrlRules\ModuleUrlRules',
+            // allowed modules lists the modules that affect the url rules
+            'allowedModules' => ['v1'],
+        ],
+        // ...
+```
+
+Check that modules are declared and see the `urlManager` settings for your API app or at least enable the
+`enablePrettyUrl` option. E.g.:
 
 ```php
 return [
@@ -48,10 +62,12 @@ return [
     ],
     'components' => [
         // ...
-        'moduleUrlRules' => [
-            'class' => '\sheershoff\ModuleUrlRules\ModuleUrlRules',
-            // allowed modules lists the modules that affect the url rules
-            'allowedModules' => ['v1'],
+        // this config is suitable for an API app
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'enableStrictParsing' => true,
+            'showScriptName' => false,
+            'rules' => [],
         ],
     ],
 ];
