@@ -60,17 +60,17 @@ class ModuleUrlRules extends Component implements BootstrapInterface
      */
     public function processModuleUrlRules($event)
     {
-        if(!(Yii::$app->has('moduleUrlRules'))) return false; // check if this app has this component set up
-        $route = Yii::$app->request->getPathInfo();
-        $module = substr($route, 0, strpos($route,'/'));
+        if(is_a(Yii::$app,'yii\web\Application')) {
+            if (!(Yii::$app->has('moduleUrlRules'))) return false; // check if this app has this component set up
+            $route = Yii::$app->request->getPathInfo();
+            $module = substr($route, 0, strpos($route, '/'));
 
-        if(in_array($module, Yii::$app->moduleUrlRules->getAllowedModules()) && Yii::$app->hasModule($module))
-        {
-            $module = Yii::$app->getModule($module);
-            if(isset($module->urlRules))
-            {
-                $urlManager = Yii::$app->getUrlManager();
-                $urlManager->addRules($module->urlRules);
+            if (in_array($module, Yii::$app->moduleUrlRules->getAllowedModules()) && Yii::$app->hasModule($module)) {
+                $module = Yii::$app->getModule($module);
+                if (isset($module->urlRules)) {
+                    $urlManager = Yii::$app->getUrlManager();
+                    $urlManager->addRules($module->urlRules);
+                }
             }
         }
         return true;
